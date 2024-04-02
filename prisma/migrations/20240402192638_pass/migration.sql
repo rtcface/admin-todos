@@ -1,4 +1,15 @@
 -- CreateTable
+CREATE TABLE "Todo" (
+    "id" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "complete" BOOLEAN NOT NULL DEFAULT false,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Account" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
@@ -30,8 +41,11 @@ CREATE TABLE "Session" (
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
+    "roles" TEXT[] DEFAULT ARRAY['user']::TEXT[],
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
     "email" TEXT,
     "emailVerified" TIMESTAMP(3),
+    "password" TEXT,
     "image" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")

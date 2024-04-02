@@ -12,11 +12,3 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - ./postgres:/var/lib/postgresql/data
-  cloudbeaver:
-    image: dbeaver/cloudbeaver:${APP_VERSION}
-    container_name: "${APP_NAME}"
-    restart: always
-    ports:
-      - "$APP_HTTP_PORT:8978"
-    volumes:
-      - ./cloudbeaver:/opt/cloudbeaver/workspace
